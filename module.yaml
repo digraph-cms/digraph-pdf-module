@@ -1,5 +1,5 @@
 module:
-  namespace: Digraph\Modules\digraph_pdf
+  name: digraph_pdf
 
 helpers:
   classes:
