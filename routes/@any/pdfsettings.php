@@ -100,6 +100,7 @@ if ($form->handle()) {
         },
         $form->value()
     );
+    unset($noun['pdf']);
     $noun->merge($value, 'pdf', true);
     if ($noun->update()) {
         $cms->helper('strings')->string(
