@@ -1,0 +1,20 @@
+{
+    "name": "byjoby/digraph-pdf",
+    "description": "Digraph module to provide PDF versions of pages and content. Also designed to allow custom PDF generation using mPDF.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joby Elliott",
+            "email": "joby@byjoby.com"
+        }
+    ],
+    "require": {
+      "mpdf/mpdf": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Digraph\\Modules\\digraph_pdf\\": "src/"
+        }
+    }
+}
