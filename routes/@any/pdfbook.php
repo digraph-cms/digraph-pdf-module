@@ -14,6 +14,7 @@ buildPdfBook($package['noun.dso.id'], $package->noun(), $cms);
 function buildPdfBook($rootID, $noun, &$cms, $extraTOCEntries=[], $level=0)
 {
     if ($cms->helper('pdf')->config($noun)['include_in_books']) {
+        echo "<!--pdf-processing-split-->";
         echo $cms->helper('pdf')->template(
             'article',
             $noun,
