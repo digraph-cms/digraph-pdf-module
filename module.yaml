@@ -39,14 +39,13 @@ pdf:
     suffix: _${pdf.filename.date}_${pdf.filename.contenthash}
     prefix: ''
   columns:
-    count: 2
+    count: 1
     gap: 5
   mpdf:
     mode: utf-8
     format: Letter
     orientation: P
     useKerning: true
-    max_colH_correction: 1.5
     mirrorMargins: 1
     setAutoBottomMargin: stretch
     setAutoTopMargin: stretch
