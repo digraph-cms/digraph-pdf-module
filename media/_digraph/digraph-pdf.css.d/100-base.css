@@ -3,7 +3,6 @@ PDF styles begin with the system print styles, to have a sane starting point.
 This also makes PDFs look more like the basic prints from a browser, just
 cleaner and generally better.
  */
-/*{include:print.css}*/
 
 body, table {
   font-size:12pt;
@@ -92,12 +91,3 @@ div.mpdf_toc_level_9 {
 div.mpdf_toc_level_10 {
   margin-left:90pt !important;
 }
-
-/*{bundle:pdf}*/
-
-/*
-Sites can add their own CSS that will only be used for PDFs by adding CSS to the
-file pdf.css (which can be in the site's media, or can be added by a theme
-module, whichever works best for the site owner).
- */
-/*{include:pdf.css}*/

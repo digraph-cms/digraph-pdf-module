@@ -29,10 +29,6 @@ $form['include_in_books']->nullText = 'default: '.($cms->config['pdf.include_in_
 $form['ttl'] = new Number('cache ttl (in seconds)');
 $form['ttl']->attr('placeholder', 'default: '.$cms->config['pdf.ttl']);
 
-# css path
-$form['css'] = new Input('css');
-$form['css']->attr('placeholder', 'default: '.$cms->config['pdf.css']);
-
 # article break type configuration
 $form['article_break_type'] = new Select('article_break_type');
 $form['article_break_type']->options([
