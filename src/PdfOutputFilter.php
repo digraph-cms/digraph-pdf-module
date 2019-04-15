@@ -11,13 +11,18 @@ class PdfOutputFilter extends \Digraph\OutputFilters\AbstractOutputFilter
         $config = $this->cms->helper('pdf')->config($package->noun());
         $package->merge($config->get(null, true), 'pdf');
         $mpdf = $this->cms->helper('pdf')->mpdf($package->noun());
+        //write CSS
+        $mpdf->WriteHTML(
+            $this->cms->helper('media')->getContent('digraph-pdf.css'),
+            1
+        );
         //split content at pdf-processing-split comments and write it into the
         //pdf in chunks. Routes should use this to avoid running into the
         //pcre.backtrack_limit limitation in mpdf
         $content = explode('<!--pdf-processing-split-->', $package['response.content']);
         foreach ($content as $chunk) {
             try {
-                $mpdf->WriteHTML($chunk);
+                $mpdf->WriteHTML($chunk, 2);
             } catch (\Exception $e) {
                 $package->error(500, 'A piece of HTML failed to write into the PDF');
                 return;
