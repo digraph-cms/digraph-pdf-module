@@ -9,6 +9,9 @@ $package['response.template'] = 'blank-pdf.twig';
 $package['response.outputfilter'] = 'pdf';
 $package['pdf.filename.name'] = '${fields.page_name} pdfbook';
 
+//try to set max execution time to unlimited
+ini_set('max_execution_time', 0);
+
 buildPdfBook($package['noun.dso.id'], $package->noun(), $cms);
 
 function buildPdfBook($rootID, $noun, &$cms, $extraTOCEntries=[], $level=0)
