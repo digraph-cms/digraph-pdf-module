@@ -16,10 +16,34 @@ class PdfOutputFilter extends \Digraph\OutputFilters\AbstractOutputFilter
             $this->cms->helper('media')->getContent('digraph-pdf.css'),
             1
         );
+        //pull content from package
+        $content = $package['response.content'];
+        //break out URLs from a[href] tags so they'll print
+        if ($config['print_link_urls']) {
+            $baseurl = $this->cms->config['url.base'];
+            $content = preg_replace_callback(
+                '/(<a.*? href=([\'"])(.+?)\2.*?>)(.+?)(<\/a>)/i',
+                function ($matches) use ($baseurl) {
+                    $full = $matches[0];
+                    $url = $matches[3];
+                    $left = $matches[1];
+                    $text = $matches[4];
+                    $right = $matches[5];
+                    if (filter_var($url, \FILTER_VALIDATE_URL) !== false) {
+                        if (strpos($url, $baseurl) === 0) {
+                            $url = '/'.substr($url, strlen($baseurl));
+                        }
+                        return "$left$text<span class=\"digraph-pdf-url\"> ($url)</span>$right";
+                    }
+                    return $full;
+                },
+                $content
+            );
+        }
         //split content at pdf-processing-split comments and write it into the
         //pdf in chunks. Routes should use this to avoid running into the
         //pcre.backtrack_limit limitation in mpdf
-        $content = explode('<!--pdf-processing-split-->', $package['response.content']);
+        $content = explode('<!--pdf-processing-split-->', $content);
         foreach ($content as $chunk) {
             try {
                 $mpdf->WriteHTML($chunk, 2);

@@ -21,19 +21,12 @@ actions:
 outputfilters:
   pdf: ${module.namespace}\PdfOutputFilter
 
-templates:
-  cssbundles:
-    pdf:
-      core_notifications: _digraph/notifications/notifications.css
-      core_filestore: _digraph/core-css/filestore.css
-      core_blocks: _digraph/core-css/blocks.css
-
 pdf:
   ttl: 86400 # day-long cache by default
   enabled: false
-  css: pdf/pdf.css
   article_break_type: next-odd
   include_in_books: true
+  print_link_urls: true
   filename:
     name: ${fields.page_name}
     suffix: _${pdf.filename.date}_${pdf.filename.contenthash}
@@ -50,9 +43,6 @@ pdf:
     setAutoBottomMargin: stretch
     setAutoTopMargin: stretch
     autoMarginPadding: 5
-  package:
-    response:
-      ttl: ${pdf.ttl}
 
 strings:
   urls:
