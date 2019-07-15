@@ -1,5 +1,5 @@
 {
-    "name": "byjoby/digraph-pdf",
+    "name": "digraphcms/digraph_pdf_module",
     "description": "Digraph module to provide PDF versions of pages and content. Also designed to allow custom PDF generation using mPDF.",
     "type": "digraph-module",
     "license": "MIT",
