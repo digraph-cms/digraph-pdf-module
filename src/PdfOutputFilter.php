@@ -67,10 +67,6 @@ class PdfOutputFilter extends \Digraph\OutputFilters\AbstractOutputFilter
 
     public function doPreFilterPackage(&$package)
     {
-        $config = $this->cms->helper('pdf')->config($package->noun());
-        if (!$config['enabled']) {
-            return false;
-        }
         $package->merge(
             $this->cms->helper('pdf')->templateFields($package->noun()),
             'fields'
