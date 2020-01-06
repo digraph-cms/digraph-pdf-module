@@ -16,7 +16,7 @@ permissions:
 actions:
   proper:
     '*':
-      pdfsettings: !id/pdfsettings
+      pdfsettings: "!id/pdfsettings"
 
 outputfilters:
   pdf: ${module.namespace}\PdfOutputFilter
