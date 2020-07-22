@@ -5,7 +5,7 @@ use Formward\Fields\Input;
 use Formward\Fields\Number;
 use Formward\Fields\Select;
 
-$package->noCache();
+$package->cache_noStore();
 
 $form = new Form('');
 
