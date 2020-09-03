@@ -11,7 +11,7 @@ permissions:
     '*/pdfbook': [allow all]
     '*/pdfsettings':
       - deny all
-      - allow group webmaster
+      - allow group admin
 
 actions:
   proper:
